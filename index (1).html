@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Serene Morning for My Darling 💖✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-light: #FFDAB9; /* Peach Puff */
+            --primary-medium: #FFB6C1; /* Light Pink */
+            --primary-dark: #FF69B4; /* Hot Pink */
+            --secondary-light: #E6E6FA; /* Lavender Blush */
+            --secondary-dark: #9370DB; /* Medium Purple */
+            --text-dark: #5A3945; /* Deep Rose */
+            --text-light: #FFFFFF;
+            --accent-gold: #FFD700; /* Gold */
+            --accent-orange: #FFA500; /* Orange */
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-medium) 100%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            position: relative;
+            animation: backgroundShift 15s ease-in-out infinite alternate;
+        }
+
+        @keyframes backgroundShift {
+            0% { background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-medium) 100%); }
+            50% { background: linear-gradient(45deg, var(--primary-medium) 0%, var(--secondary-light) 100%); }
+            100% { background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-medium) 100%); }
+        }
+
+        /* Ambient particles */
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: floatAndFade 10s infinite ease-in-out;
+            opacity: 0;
+            z-index: 0;
+        }
+
+        @keyframes floatAndFade {
+            0% { transform: translateY(0) translateX(0) scale(0.5); opacity: 0; }
+            20% { opacity: 0.6; }
+            80% { opacity: 0.1; }
+            100% { transform: translateY(-100vh) translateX(50px) scale(1.2); opacity: 0; }
+        }
+
+        .sparkle-effect {
+            position: absolute;
+            color: var(--accent-gold);
+            font-size: 24px;
+            animation: twinkle 1.5s ease-out forwards;
+            pointer-events: none;
+            opacity: 0;
+            text-shadow: 0 0 8px var(--accent-gold);
+            z-index: 10;
+        }
+
+        @keyframes twinkle {
+            0% { transform: scale(0.5) rotate(0deg); opacity: 0; }
+            50% { transform: scale(1.2) rotate(360deg); opacity: 1; }
+            100% { transform: scale(0.8) rotate(720deg); opacity: 0; }
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            max-width: 600px;
+            width: 90%;
+            margin: 20px auto;
+            display: none; /* All containers hidden by default, shown by JS */
+            flex-direction: column;
+            align-items: center;
+            animation: fadeInScale 0.7s ease-out forwards;
+            position: relative;
+            z-index: 5;
+            overflow: hidden; /* For inner glow effect */
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -10px; left: -10px; right: -10px; bottom: -10px;
+            background: linear-gradient(45deg, var(--primary-dark), var(--secondary-dark));
+            z-index: -1;
+            filter: blur(20px);
+            opacity: 0.3;
+            border-radius: 30px;
+        }
+
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-dark);
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.08);
+            margin-bottom: 15px;
+        }
+
+        h1 { font-size: 3.5em; color: var(--primary-dark); }
+        h2 { font-size: 2.2em; color: var(--secondary-dark); }
+        h3 { font-size: 1.6em; color: var(--text-dark); }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        button {
+            background: linear-gradient(90deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+            color: var(--text-light);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+            margin: 10px;
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+
+        button:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+            background: linear-gradient(90deg, var(--secondary-dark) 0%, var(--primary-dark) 100%);
+        }
+        
+        button:active {
+            transform: translateY(0px) scale(0.98);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Specific button styles */
+        .option-button, .quiz-option-button {
+            background: linear-gradient(90deg, #b0e0e6, #add8e6); /* Light Blue */
+            color: #333;
+        }
+        .option-button:hover, .quiz-option-button:hover {
+            background: linear-gradient(90deg, #87ceeb, #5f9ea0); /* Deeper Blue */
+            color: white;
+        }
+
+        #reveal-btn {
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-orange));
+            color: var(--text-dark);
+        }
+        #reveal-btn:hover {
+             background: linear-gradient(90deg, var(--accent-orange), var(--accent-gold));
+             color: white;
+        }
+        
+        .objects-display {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .object-icon {
+            font-size: 3.5em;
+            animation: bounce 1.5s ease-in-out infinite alternate;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+        }
+        .object-icon:nth-child(2) { animation-delay: 0.3s; }
+        .object-icon:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+
+        #feedback-message {
+            color: var(--primary-dark);
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 1.2em;
+            animation: pulseText 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseText {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.02); opacity: 0.9; }
+        }
+
+        #prank-message p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4em;
+            font-weight: bold;
+            color: var(--secondary-dark);
+            margin-bottom: 25px;
+        }
+
+        .mood-options button {
+            background: linear-gradient(90deg, #c3e6cb, #a8dcd1); /* Soft green/teal */
+            color: var(--text-dark);
+        }
+        .mood-options button:hover {
+            background: linear-gradient(90deg, #8bc34a, #4caf50); /* Darker green */
+            color: white;
+        }
+
+        #mood-response {
+            font-style: italic;
+            color: var(--primary-dark);
+            margin-top: 15px;
+        }
+
+        #affirmation-display {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--secondary-dark);
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            border: 1px solid var(--primary-light);
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: textFadeIn 1s ease-out;
+        }
+        @keyframes textFadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+
+        audio {
+            display: none; /* Hide the audio player */
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            function createParticle() {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                const size = Math.random() * 20 + 10; // 10-30px
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.top = `${Math.random() * 100}vh`;
+                particle.style.animationDelay = `${Math.random() * 10}s`; // Stagger animation
+                document.body.appendChild(particle);
+                setTimeout(() => particle.remove(), 10000); // Remove after animation
+            }
+            for (let i = 0; i < 20; i++) {
+                createParticle();
+            }
+            setInterval(() => createParticle(), 2000); // Continuously add particles
+        });
+    </script>
+
+    <div id="greeting-section" class="container" style="display: flex;">
+        <h1>Good Morning JAANEMAN! 😎💖🌅</h1>
+        <p>A little sprinkle of magic to start your day...</p>
+        <button onclick="startMorning()">Unveil the Morning Magic ✨</button>
+        <div id="greeting-quote" style="margin-top: 25px; font-style: italic; color: var(--secondary-dark);"></div>
+        <audio id="background-music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" loop preload="auto"></audio>
+    </div>
+
+    <div id="quiz-section" class="container">
+        <h2>Rise & Shine! But are you *really* awake? 😉</h2>
+        <p>A quick test for those sleepy eyes... how many fluffy clouds do you see?</p>
+        <div class="objects-display">
+            <span class="object-icon">☁️</span>
+            <span class="object-icon">☁️</span>
+            <span class="object-icon">☁️</span>
+        </div>
+        <div class="options">
+            <button class="quiz-option-button" onclick="checkAnswer(1)">One, just like you, unique and special! 💎</button>
+            <button class="quiz-option-button" onclick="checkAnswer(2)">Two, just like your beautiful eyes! 👀</button>
+            <button class="quiz-option-button" onclick="checkAnswer(3)">Three, just like the stars that fade when you walk by.! 🥰</button>
+            <button class="quiz-option-button" onclick="checkAnswer(4)">Four, maybe you need more sleep... 🥲😭</button>
+        </div>
+        <p id="feedback-message"></p>
+        <button id="reveal-btn" onclick="revealAnswer()" style="display: none;">Aha! Reveal My Fate! 🎉</button>
+    </div>
+
+    <div id="prank-reveal-section" class="container">
+        <h2>🤣 Gotcha! The Sweetest Prank on You!</h2>
+        <p id="prank-message">
+            Wanna know the *real* answer? Honestly, it doesn't even matter...<br>
+            **Because YOU are the correct answer to my morning, darling!**<br>
+            Just playing around! 🤣🥰♥️✨
+        </p>
+        <button onclick="showCustomPages()"> Wanna continue? 😂🥰🤭 💖</button>
+    </div>
+
+    <div id="custom-pages-section" class="container">
+        <h2>Your Personal Morning Delight ✨</h2>
+        <p>Let's check in with your beautiful self!</p>
+
+        <div style="margin-bottom: 25px;">
+            <h3>Tell me, is your amazing brain fully switched on, or still dreaming of rainbows? 🌈</h3>
+            <div class="mood-options">
+                <button onclick="checkMood('sleepy')">Still softly dreaming... 😴💭</button>
+                <button onclick="checkMood('awake')">Sparkling and ready to conquer! ✨🚀</button>
+            </div>
+            <p id="mood-response" style="margin-top: 15px; font-weight: bold;"></p>
+        </div>
+        
+        <button onclick="goToAffirmationGenerator()">Your Daily Dose of Radiance! 💖</button>
+    </div>
+
+    <div id="affirmation-generator-section" class="container">
+        <h2>A Little Whisper for Your Soul 🌟</h2>
+        <h3>Tap below — tera daily dose of confidence 😎</h3>
+        <button onclick="generateAffirmation()">Unleash My Inner Sunshine! ☀️</button>
+        <p id="affirmation-display"></p>
+        <button onclick="goBackToCustomPages()">Back to Our Morning Adventure 😊</button>
+    </div>
+
+    <div id="special-message-section" class="container">
+        <h2>One Last Thought, Just For You...</h2>
+        <p id="special-message-text" style="font-family: 'Playfair Display', serif; font-size: 1.3em; font-style: italic;"></p>
+        <button onclick="location.reload()">Restart the Magic! ✨</button>
+    </div>
+
+    <script>
+        let attempts = 0;
+        const correctObjects = 3;
+        const greetingQuotes = [
+            "May your coffee be strong and your day be amazing!",
+            "Waking up with a grateful heart changes everything.",
+            "You are a limited edition. Rise and shine!",
+            "Hello, gorgeous! The world is waiting for your sparkle."
+        ];
+        const affirmations = [
+            "Daily dose chahiye? 🤨 uthh jaa fatak se, aayi badi. then mumma ki help bhi toh krni hai. and help se i dont mean ki unke kaam badhane hai 🥲 also, u were about to plan the movie with mumma na, kar lo aaj 😋😋️",
+            
+        ];
+        
+        let currentGreetingQuoteIndex = 0;
+        let quoteInterval;
+
+        // --- Utility Functions for Effects ---
+        function createSparkleEffect(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle-effect';
+            sparkle.innerHTML = '✨';
+            sparkle.style.left = `${x}px`;
+            sparkle.style.top = `${y}px`;
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1500); // Remove after animation
+        }
+
+        // --- Page Navigation & Logic ---
+        function showSection(id) {
+            document.querySelectorAll('.container').forEach(sec => sec.style.display = 'none');
+            document.getElementById(id).style.display = 'flex';
+            const rect = document.getElementById(id).getBoundingClientRect();
+            createSparkleEffect(rect.left + rect.width / 2, rect.top + rect.height / 2); // Sparkle on new section
+        }
+
+        function startMorning() {
+            const music = document.getElementById('background-music');
+            music.volume = 0.4; // Soften the music
+            music.play().catch(e => console.log('Audio play failed:', e));
+
+            const greetingQuoteEl = document.getElementById('greeting-quote');
+            if (!quoteInterval) { // Start cycling quotes only once
+                quoteInterval = setInterval(() => {
+                    currentGreetingQuoteIndex = (currentGreetingQuoteIndex + 1) % greetingQuotes.length;
+                    greetingQuoteEl.textContent = greetingQuotes[currentGreetingQuoteIndex];
+                }, 3000); // Change quote every 3 seconds
+            }
+            greetingQuoteEl.textContent = greetingQuotes[currentGreetingQuoteIndex]; // Set initial quote
+
+            showSection('quiz-section');
+        }
+
+        function checkAnswer(selectedAnswer) {
+            attempts++;
+            const feedback = document.getElementById('feedback-message');
+            const targetElement = event.target; // Get the button that was clicked
+            
+            // Trigger a sparkle effect on the clicked button
+            const rect = targetElement.getBoundingClientRect();
+            createSparkleEffect(rect.left + rect.width / 2, rect.top + rect.height / 2);
+
+            if (selectedAnswer === correctObjects) {
+                feedback.innerHTML = 'Oops! Are your eyes playing tricks on you, my sweet? Try again! 😂';
+            } else {
+                feedback.innerHTML = 'A little off, dude😂! Let\'s give it another go! 😉';
+            }
+
+            if (attempts >= 2) {
+                document.getElementById('reveal-btn').style.display = 'block';
+            }
+        }
+
+        function revealAnswer() {
+            showSection('prank-reveal-section');
+        }
+
+        function showCustomPages() {
+            showSection('custom-pages-section');
+        }
+
+        function checkMood(mood) {
+            const moodResponse = document.getElementById('mood-response');
+            if (mood === 'sleepy') {
+                moodResponse.innerHTML = "Ah, the gentle pull of dreamland! Don't worry, your sparkle will catch up. ✨";
+            } else {
+                moodResponse.innerHTML = "That's my radiant girl! Ready to embrace the day with that beautiful energy! 🚀";
+            }
+            createSparkleEffect(event.clientX, event.clientY);
+        }
+
+        function goToAffirmationGenerator() {
+            showSection('affirmation-generator-section');
+        }
+
+        function generateAffirmation() {
+            const affirmationDisplay = document.getElementById('affirmation-display');
+            const randomIndex = Math.floor(Math.random() * affirmations.length);
+            affirmationDisplay.textContent = affirmations[randomIndex];
+            createSparkleEffect(event.clientX, event.clientY); // Sparkle on button click
+            
+            // Add a special message after a couple of affirmations
+            if (sessionStorage.getItem('affirmationCount')) {
+                let count = parseInt(sessionStorage.getItem('affirmationCount')) + 1;
+                sessionStorage.setItem('affirmationCount', count);
+                if (count >= 2) { // After generating 2 or more affirmations
+                    setTimeout(() => {
+                        showSection('special-message-section');
+                        document.getElementById('special-message-text').innerHTML = 
+                            "My dearest, always remember: **You are loved beyond measure.** Each morning is a fresh canvas, and you hold the brush to paint it beautifully. Keep shining! 🥰";
+                    }, 2500); // Give time for affirmation to be read
+                }
+            } else {
+                sessionStorage.setItem('affirmationCount', 1);
+            }
+        }
+
+        function goBackToCustomPages() {
+            showSection('custom-pages-section');
+        }
+
+        // Initialize display for the first section and quotes
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('greeting-section').style.display = 'flex';
+            document.getElementById('greeting-quote').textContent = greetingQuotes[0];
+            sessionStorage.removeItem('affirmationCount'); // Reset count on page load
+        });
+    </script>
+</body>
+</html>
